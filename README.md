@@ -9,20 +9,26 @@ Hello, and welcome to a new approach for variable management. This app uses JQue
 
 # To Run
 
-* Install [node.js](http://nodejs.org/).
-* Run `npm install` to grab dependencies inside the top level directory.
-* Run `node server.js` to start the server.
-* Navigate to http://localhost:8000.
+* Install the pre-requisites listed below
+* Run `npm install` inside the top level directory to grab dependencies
+* Run `gulp serve` to start the server
+* Navigate to http://localhost:4000
 
-The default port is 8000. To change the port the server runs on, specify the port as follows:
+## Pre-Requisites
 
-	PORT=1234 node server.js
+### Node
 
-or in windows:
+If you don't already have it installed, install Node. If you use homebrew, you can install using
 
-	set PORT=1234
-	node server.js
+	brew install node
 
+Otherwise, you can download and install from [here](http://nodejs.org/download/).
+
+### Gulp
+
+Gulp must be installed globally in order to use the command line tools.
+
+	npm install -g gulp
 
 # Building
 
@@ -30,25 +36,15 @@ This project is built using Gulp, a JavaScript task runner.
 
 ## Pre-Requisites
 
-### Node and Roby
+In addition to Node and Gulp, you will need the following:
 
-You will need Node and Ruby. If you use homebrew, you can install Node using
-
-	brew install node
-
-Otherwise, you can download and install from [here](http://nodejs.org/download/).
+### Ruby
 
 I recommend installing Ruby using RVM. Even if your system comes with Ruby (I'm looking at you OSX) it is often preferable to have a user installation that will allow the installation of gems without the need for `sudo`. Install RVM and Ruby using
 
 	\curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 `ruby -v` will now tell you which version of Ruby you are using. Check out the [RVM docs](http://rvm.io/rvm/basics) to read how to switch between Ruby versions.
-
-### Gulp
-
-Gulp must be installed globally in order to use the command line tools.
-
-	npm install -g gulp
 
 ### Compass
 
@@ -87,3 +83,4 @@ Running `gulp` without a specified task, as above, will invoke `watch` then `bui
 * Add production task that minifies code using minifyify (module for minification of browserify bundles)
 * Add JSHint
 * Add Font support
+* Example using handlebars

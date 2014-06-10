@@ -1,10 +1,14 @@
 'use strict';
 
-var main = require('app'),
-	$ = require('jquery');
+var $ = require('jquery'),
+	appFn = require('app'),
+	numberTemplateFn = require('app/number-template'),
+	widgetModule = require('app/widget'),
+	container = '.container',
+	widget;
 
-console.log('yay, app.js was loaded');
-console.log('Is NumberTemplate a thing?');
-console.log(main);
-console.log('What about jquery?');
-console.log($);
+$(appFn()).appendTo(container);
+$(numberTemplateFn(5)).appendTo(container);
+
+widget = new widgetModule();
+widget.appendTo(container);

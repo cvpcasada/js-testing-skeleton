@@ -1,10 +1,10 @@
 'use strict';
 
 var gulp = require('gulp'),
-EXPRESS_PORT = 4000,
-EXPRESS_ROOT = 'build',
-LIVERELOAD_PORT = 35729,
-lr;
+	EXPRESS_PORT = 4000,
+	EXPRESS_ROOT = 'build',
+	LIVERELOAD_PORT = 35729,
+	lr;
 
 function startExpress() {
 
