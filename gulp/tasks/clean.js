@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 require('./build');
 
 gulp.task('clean', function() {
-	rimraf('dist', function() {
+	rimraf('build', function() {
 		gulp.start('build');
 	});
 });

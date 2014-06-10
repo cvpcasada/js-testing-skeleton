@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-gulp.task('copy', function() {
+gulp.task('html', function() {
 	return gulp.src('src/htdocs/**')
 		.pipe(gulp.dest('build'));
 });

@@ -1,13 +1,10 @@
 'use strict';
 
-var NumberTemplate = require('number-template');
-//$ = require('jquery');
-
-require('jquery');
+var main = require('app'),
+	$ = require('jquery');
 
 console.log('yay, app.js was loaded');
 console.log('Is NumberTemplate a thing?');
-console.log(NumberTemplate);
+console.log(main);
 console.log('What about jquery?');
 console.log($);
-console.log(jquery);

@@ -5,7 +5,6 @@ Hello, and welcome to a new approach for variable management. This app uses JQue
 * Gulp - a stream based JS task runner, for building
 * Browserify - module support
 * Node / npm - for dependency management
-* Minifyify - for minification of browserify bundles
 * Compass - support for Sass
 
 # To Run
@@ -74,23 +73,17 @@ This will build and start watching your files for changes. If you would like to 
 
 * `browserify` - will JSHint and bundle your JavaScript modules
 * `watchify` - same as `browserify`, but JavaScript files will continue to be watched for changes
-* `images` - copy changed images from `/src/images/` to `/dist/images/`
-* `copy` - copy the contents of `src/htdocs` to the root of the `dist` folder
-* `compass` - compiles Sass files in `/src/sass/` to a css file in `dist` using Compass
-* `clean` - removes the dist directory and kicks off a build
+* `images` - copy changed images from `/src/images/` to `/build/images/`
+* `copy` - copy the contents of `src/htdocs` to the root of the `build` folder
+* `compass` - compiles Sass files in `/src/sass/` to a css file in `build` using Compass
+* `clean` - removes the build directory and kicks off a build
 * `watch` - will invoke the appropriate task when files in the `src` folder change
 * `build` - runs `browserify`, `compass`, `images` and `copy`
 
 Running `gulp` without a specified task, as above, will invoke `watch` then `build`.
 
+# TODO
 
-Clean - delete dist directory
-Scripts - jshint, uglify, copy
-HTML - copy
-CSS - sass, copy
-Fonts - copy
-Images - copy
-
-
-
-
+* Add production task that minifies code using minifyify (module for minification of browserify bundles)
+* Add JSHint
+* Add Font support

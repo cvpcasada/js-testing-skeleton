@@ -2,11 +2,10 @@
 
 var gulp = require('gulp');
 
-require('./browserify');
-
 gulp.task('watch', function() {
+	gulp.start('watchify');
 	gulp.watch('src/sass/**', ['compass']);
 	gulp.watch('src/images/**', ['images']);
-	gulp.watch('src/htdocs/**', ['copy']);
-	gulp.start('watchify');
+	gulp.watch('src/htdocs/**', ['html']);
+	gulp.start('serve');
 });
