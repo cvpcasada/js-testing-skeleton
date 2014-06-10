@@ -1,14 +1,15 @@
 'use strict';
 
 var $ = require('jquery'),
-	appFn = require('app'),
-	numberTemplateFn = require('app/number-template'),
-	widgetModule = require('app/widget'),
+	HelloWorld = require('app/hello-world'),
+	HelloName = require('app/hello-name'),
 	container = '.container',
-	widget;
 
-$(appFn()).appendTo(container);
-$(numberTemplateFn(5)).appendTo(container);
+	helloWorld,
+	helloName;
 
-widget = new widgetModule();
-widget.appendTo(container);
+helloWorld = new HelloWorld();
+helloName = new HelloName();
+
+$(helloWorld.getMessage()).appendTo(container);
+$(helloName.getMessage('Helen')).appendTo(container);

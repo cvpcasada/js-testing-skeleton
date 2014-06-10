@@ -2,6 +2,9 @@
   "name": "variable-management",
   "version": "1.0.0",
   "description": "Variable Management Test Server",
+  "private": true,
+  "author": "Helen Durrant",
+  "readmeFilename": "README.md",
   "dependencies": {
     "jquery": "^1.11.1"
   },
@@ -27,8 +30,5 @@
     "tiny-lr": "0.0.7",
     "vinyl-source-stream": "^0.1.1",
     "watchify": "^0.10.2"
-  },
-  "private": true,
-  "author": "Helen Durrant",
-  "readmeFilename": "README.md"
+  }
 }

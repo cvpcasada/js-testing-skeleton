@@ -25,6 +25,8 @@ var browserify = require('browserify'),
 
 		bundleLogger.start();
 
+		bundler.transform({global: true}, require('hbsfy'));
+
 		return bundler
 			// Enable source maps
 			.bundle({debug: true})

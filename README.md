@@ -83,4 +83,3 @@ Running `gulp` without a specified task, as above, will invoke `watch` then `bui
 * Add production task that minifies code using minifyify (module for minification of browserify bundles)
 * Add JSHint
 * Add Font support
-* Example using handlebars
