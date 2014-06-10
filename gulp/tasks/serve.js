@@ -1,36 +1,43 @@
 'use strict';
 
 var gulp = require('gulp'),
-	watch = require('gulp-watch'),
-	refresh = require('gulp-livereload'),
-	liveReloadServer = require('tiny-lr')(),
-	express = require('express'),
-	liveReload = require('connect-livereload'),
-	liveReloadPort = 35728,
-	serverPort = 9000,
-	server;
+EXPRESS_PORT = 4000,
+EXPRESS_ROOT = 'build',
+LIVERELOAD_PORT = 35729,
+lr;
 
-// Set up an express server (but not starting it yet)
-var server = express();
+function startExpress() {
 
-// Add live reload
-server.use(liveReload({port: liveReloadPort}));
+	var express = require('express'),
+	app = express();
 
-// Use our 'build' folder as rootfolder
-server.use(express.static('./build'));
+	app.use(require('connect-livereload')());
+	app.use(express.static(EXPRESS_ROOT));
+	app.listen(EXPRESS_PORT);
+}
 
-// Because I like HTML5 pushstate .. this redirects everything back to our index.html
-server.all('/*', function(req, res) {
-	res.sendfile('index.html', { root: 'build' });
-});
+function startLivereload() {
 
+	lr = require('tiny-lr')();
+	lr.listen(LIVERELOAD_PORT);
+}
+
+// Notifies livereload of changes detected by `gulp.watch()`
+function notifyLivereload(event) {
+
+	// `gulp.watch()` events provide an absolute path so we need to make it relative to the server root
+	var fileName = require('path').relative(EXPRESS_ROOT, event.path);
+
+	lr.changed({
+		body: {
+			files: [fileName]
+		}
+	});
+}
+
+// Default task that will be run when no parameter is provided to gulp
 gulp.task('serve', function() {
-	// Start webserver
-	server.listen(serverPort);
-	// Start live reload
-	liveReloadServer.listen(liveReloadPort);
-
-	gulp.src('./build/**')
-		.pipe(watch())
-		.pipe(refresh(liveReloadServer));
+	startExpress();
+	startLivereload();
+	gulp.watch(['build/**'], notifyLivereload);
 });
