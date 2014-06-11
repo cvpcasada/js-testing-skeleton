@@ -7,17 +7,19 @@
    If the watch task is running, this uses watchify instead of browserify for faster bundling using caching.
 */
 
-var browserify = require('browserify'),
-	watchify = require('watchify'),
-	gulp = require('gulp'),
+var argv = require('yargs').argv,
+	browserify = require('browserify'),
 	bundleLogger = require('../util/bundleLogger'),
+	gulp = require('gulp'),
 	handleErrors = require('../util/handleErrors'),
 	source = require('vinyl-source-stream'),
+	streamify = require('gulp-streamify'),
+	watchify = require('watchify'),
+    gulpif = require('gulp-if'),
+    uglify = require('gulp-uglify'),
 
 	methodConfig = {
-		// Entry point(s) to the app
 		entries: ['./src/javascript/app.js'],
-		// Add file extentions to make optional in your requires
 		extensions: ['.hbs']
 	},
 
@@ -28,29 +30,21 @@ var browserify = require('browserify'),
 		bundler.transform({global: true}, require('hbsfy'));
 
 		return bundler
-			// Enable source maps
-			.bundle({debug: true})
-
-			// Report compile errors
+			.bundle({debug: !argv.prod})
 			.on('error', handleErrors)
-
-			// Use vinyl-source-stream to make the stream gulp compatible. Specifiy the desired output filename here.
 			.pipe(source('app.js'))
-
-			// Output destination
+			.pipe(gulpif(argv.prod, streamify(uglify())))
 			.pipe(gulp.dest('./build/'))
-
-			// Log when bundling completes
 			.on('end', bundleLogger.end);
 	};
 
-gulp.task('browserify', function() {
+gulp.task('browserify', ['jshint'], function() {
 
 	var bundler = browserify(methodConfig);
 	return bundle(bundler);
 });
 
-gulp.task('watchify', function() {
+gulp.task('watchify', ['jshint'], function() {
 
 	var bundler = watchify(methodConfig);
 

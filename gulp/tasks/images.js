@@ -8,7 +8,7 @@ gulp.task('images', function() {
 	var dest = './build/images';
 
 	return gulp.src('./src/images/**')
-		.pipe(changed(dest)) // Ignore unchanged files
-		.pipe(imagemin()) // Optimize
+		.pipe(changed(dest))
+		.pipe(imagemin())
 		.pipe(gulp.dest(dest));
 });

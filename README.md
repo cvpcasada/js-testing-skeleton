@@ -16,6 +16,8 @@ Hello, and welcome to a new approach for variable management. This app uses JQue
 
 ## Pre-Requisites
 
+On OS X you're recommended to increase the [ulimit](http://superuser.com/a/443168/6877) as it's ridiculously low by default. Use `ulimit -S -n 2048`.
+
 ### Node
 
 If you don't already have it installed, install Node. If you use homebrew, you can install using
@@ -79,7 +81,10 @@ This will build and start watching your files for changes. If you would like to 
 
 Running `gulp` without a specified task, as above, will invoke `watch` then `build`.
 
+## Building for Production
+
+To minify built files ready for production, run `gulp build --prod`.
+
 # TODO
 
-* Add production task that minifies code using minifyify (module for minification of browserify bundles)
 * Add Font support

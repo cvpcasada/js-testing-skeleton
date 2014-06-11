@@ -1,8 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
+var changed = require('gulp-changed'),
+	dest = './build',
+	gulp = require('gulp');
 
 gulp.task('html', function() {
 	return gulp.src('src/htdocs/**')
-		.pipe(gulp.dest('build'));
+		.pipe(changed(dest))
+		.pipe(gulp.dest(dest));
 });
