@@ -1,14 +1,28 @@
-/*
-	gulpfile.js
-	===========
-	Rather than manage one giant configuration file responsible
-	for creating multiple tasks, each task has been broken out into
-	its own file in gulp/tasks. Any file in that folder gets automatically
-	required by the loop in ./gulp/index.js (required below).
+'use strict';
 
-	To add a new task, simply add a new task file to gulp/tasks.
+var gulp = require('gulp'),
+	mocha = require('gulp-mocha'),
+	cache = require('gulp-cached'),
+	jshint = require('gulp-jshint'),
+	jshintStylish = require('jshint-stylish');
 
-	Credit to greypants and his gulp-starter project for this (https://github.com/greypants/gulp-starter).
-*/
+gulp.task('test', function() {
+	return gulp.src(['test/**/*.js'])
+		.pipe(mocha({
+			ui: 'bdd',
+			reporter: 'nyan'
+		}));
+});
 
-require('./gulp');
+gulp.task('jshint', function() {
+	return gulp.src(['src/**/*.js', 'test/**/*.js'])
+		.pipe(cache('linting'))
+		.pipe(jshint())
+		.pipe(jshint.reporter(jshintStylish));
+});
+
+gulp.task('watch', function() {
+	gulp.watch(['src/**/*.js', 'test/**/*.js'], ['jshint', 'test']);
+});
+
+gulp.task('default', ['watch']);

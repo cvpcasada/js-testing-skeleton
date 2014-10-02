@@ -1,7 +1,7 @@
 'use strict';
 
 var chai = require('chai'),
-	HelloI18n = require('app/hello-i18n'),
+	HelloI18n = require('../src/hello-i18n'),
 
 	expect = chai.expect;
 

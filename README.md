@@ -11,7 +11,7 @@ Hello, and welcome to a new approach for variable management. This app uses JQue
 
 * Install the pre-requisites listed below
 * Run `npm install` inside the top level directory to grab dependencies
-* Run `gulp serve` to start the server
+* Run `gulp watch` to watch files and t
 * Navigate to http://localhost:4000
 
 ## Pre-Requisites
@@ -70,21 +70,11 @@ It's as simple as running
 This will build and start watching your files for changes. If you would like to run a specific task, you can run any of the following:
 
 * `jshint` - will JSHint your JavaScript
-* `browserify` - will bundle your JavaScript modules
-* `watchify` - same as `browserify`, but JavaScript files will continue to be watched for changes
-* `images` - copy changed images from `/src/images/` to `/build/images/`
 * `copy` - copy the contents of `src/htdocs` to the root of the `build` folder
-* `compass` - compiles Sass files in `/src/sass/` to a css file in `build` using Compass
 * `clean` - removes the build directory and kicks off a build
 * `watch` - will invoke the appropriate task when files in the `src` folder change
 * `build` - runs `browserify`, `compass`, `images` and `copy`
 
 Running `gulp` without a specified task, as above, will invoke `watch` then `build`.
 
-## Building for Production
 
-To minify built files ready for production, run `gulp build --prod`.
-
-# TODO
-
-* Add Font support
