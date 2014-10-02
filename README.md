@@ -1,18 +1,12 @@
 # Welcome
 
-Hello, and welcome to a new approach for variable management. This app uses JQuery and Sass, and utilises a number of other tools to support ease of development:
-
-* Gulp - a stream based JS task runner, for building
-* Browserify - module support
-* Node / npm - for dependency management
-* Compass - support for Sass
+Get started with JS testing quickly with this skeleton framework.
 
 # To Run
 
 * Install the pre-requisites listed below
 * Run `npm install` inside the top level directory to grab dependencies
-* Run `gulp watch` to watch files and t
-* Navigate to http://localhost:4000
+* Run `gulp` to watch files and test when files change
 
 ## Pre-Requisites
 
@@ -36,25 +30,6 @@ Gulp must be installed globally in order to use the command line tools.
 
 This project is built using Gulp, a JavaScript task runner.
 
-## Pre-Requisites
-
-In addition to Node and Gulp, you will need the following:
-
-### Ruby
-
-I recommend installing Ruby using RVM. Even if your system comes with Ruby (I'm looking at you OSX) it is often preferable to have a user installation that will allow the installation of gems without the need for `sudo`. Install RVM and Ruby using
-
-	\curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-`ruby -v` will now tell you which version of Ruby you are using. Check out the [RVM docs](http://rvm.io/rvm/basics) to read how to switch between Ruby versions.
-
-### Compass
-
-If you don't already have Compass installed, install using:
-
-	gem update --system
-	gem install compass
-
 ### Install npm dependencies
 
 	npm install
@@ -66,15 +41,3 @@ This runs through all dependencies listed in `package.json` and downloads them t
 It's as simple as running
 
 	gulp
-
-This will build and start watching your files for changes. If you would like to run a specific task, you can run any of the following:
-
-* `jshint` - will JSHint your JavaScript
-* `copy` - copy the contents of `src/htdocs` to the root of the `build` folder
-* `clean` - removes the build directory and kicks off a build
-* `watch` - will invoke the appropriate task when files in the `src` folder change
-* `build` - runs `browserify`, `compass`, `images` and `copy`
-
-Running `gulp` without a specified task, as above, will invoke `watch` then `build`.
-
-
